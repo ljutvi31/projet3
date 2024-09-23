@@ -45,3 +45,9 @@ async function createGalleryElement() {
 
 // Exécution de la fonction principale
 createGalleryElement();
+
+function getCategories(works) { // récupération catégories par travaux
+  const categories = new Set(works.map((work) => work.category.name)); // utilisation de Set pour chercher toutes les catégories et éliminer les doublons
+  categories.add("Par defaut"); // ajout de la catégorie par defaut
+  return [...categories]; // catégories sous forme d'un tableau
+}
