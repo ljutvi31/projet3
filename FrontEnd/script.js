@@ -1,18 +1,14 @@
-// Fonction pour récupérer les travaux via une API Utilisation de 'await' pour attendre la réponse de l'API
 async function getApiWorks() {
   try {
-    const response = await fetch("http://localhost:5678/api/works"); // Renvoie des données au format JSON
+    const response = await fetch("http://localhost:5678/api/works");
     return await response.json();
   } catch (error) {
-    // Affichage de l'erreur dans la console en cas de problème
     console.error("Erreur lors de la récupération des données :", error);
     return [];
   }
 }
 
-// Fonction pour créer un élément 'figure' avec une image et une légende
 function createFigureElement(work) {
-  // Création des éléments <img> et <figcaption> pour chaque travail
   const imageElement = document.createElement("img");
   imageElement.src = work.imageUrl;
   imageElement.alt = work.title;
@@ -20,7 +16,6 @@ function createFigureElement(work) {
   const figCaptionElement = document.createElement("figcaption");
   figCaptionElement.innerText = work.title;
 
-  // Création de l'élément <figure> et ajout des enfants
   const figureElement = document.createElement("figure");
   figureElement.appendChild(imageElement);
   figureElement.appendChild(figCaptionElement);
@@ -29,49 +24,80 @@ function createFigureElement(work) {
 }
 
 function getCategories(works) {
-  // recup des noms de categories sur works
   const categoryNames = works.map((work) => work.category.name);
-  const uniqueCategoryNames = new Set(categoryNames); // map est comme une boucle et set permet deviter les doublons et de stocker valeurs uniques
-  
+  const uniqueCategoryNames = new Set(categoryNames);
+
   uniqueCategoryNames.add("Tous");
   return [...uniqueCategoryNames];
 }
 
-function createFilterButtons(categories) { 
+function createFilterButtons(categories, works) {
   const filterContainer = document.createElement("div");
   filterContainer.classList.add("filter-container");
   const filterButtons = document.querySelector(".category-menu");
-  categories.forEach((category) => { // fonction flechee selection de chaque catgeorie une à une
+  categories.forEach((category) => {
     const button = document.createElement("button");
     button.innerText = category;
- filterButtons.appendChild(button);
- button.addEventListener('click', function(event){
-  onClickFilterButton(category);
- })
+    filterButtons.appendChild(button);
+    button.addEventListener("click", function (event) {
+      const galleryHtml = document.querySelector(".gallery");
+      galleryHtml.innerHTML = "";
+     onClickSortWorks(category, works);
+      // onClickFilterWorks(category, works);
+    });
+  });
+}
+function getCategoryIdByName(works, categoryNames) {
+  if (categoryNames === "Tous") {
+    return 0;
+  }
+  for (let i = 0; i < works.length; i++) {
+    if (works[i].category.name === categoryNames) {
+      return works[i].categoryId;
+    }
+  }
+}
+
+function onClickSortWorks(category, works) {
+  //tri du cours
+  const categoryId = getCategoryIdByName(works, category);
+  const galleryHtml = document.querySelector(".gallery");
+  works.sort((a, b) => {
+    if (category === "Tous") {
+      return a.id - b.id;
+    } else if (a.categoryId === categoryId) {
+      return -1;
+    }
+    return 1;
+  });
+  works.forEach((work) => {
+    const figureElement = createFigureElement(work);
+    galleryHtml.appendChild(figureElement);
   });
 }
 
-function onClickFilterButton(category){
-  console.log(category);
-
+function onClickFilterWorks(category, works) { // filtres par categorie a voir avec Leo
+  const galleryHtml = document.querySelector(".gallery");
+works.forEach((work) => {
+  if(work.category.name === category || category==="Tous") {
+    const figureElement = createFigureElement(work);
+    galleryHtml.appendChild(figureElement);
+  }
+})
 }
-
-
-// Fonction principale pour insérer les travaux dans la galerie, récupération des travaux via l'API et des catégories dans travaux
 async function createGalleryElement() {
   const works = await getApiWorks();
   const categories = getCategories(works);
-  createFilterButtons(categories);
+  createFilterButtons(categories, works);
 
-  // Sélection de la galerie où insérer les figures
   const galleryHtml = document.querySelector(".gallery");
-
-  // Boucle à travers chaque travail et création d'éléments de la galerie
   works.forEach((work) => {
-    const figureElement = createFigureElement(work); // Crée une figure pour chaque travail
-    galleryHtml.appendChild(figureElement); // Ajoute la figure dans la galerie
+    const figureElement = createFigureElement(work);
+    galleryHtml.appendChild(figureElement);
   });
 }
 
-// Exécution de la fonction principale
-createGalleryElement();
+async function main() {
+  await createGalleryElement();
+}
+main();
