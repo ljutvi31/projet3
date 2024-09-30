@@ -27,8 +27,7 @@ function getCategories(works) {
   const categoryNames = works.map((work) => work.category.name);
   const uniqueCategoryNames = new Set(categoryNames);
 
-  uniqueCategoryNames.add("Tous");
-  return [...uniqueCategoryNames];
+  return ["Tous", ...uniqueCategoryNames];
 }
 
 function createFilterButtons(categories, works) {
@@ -40,43 +39,48 @@ function createFilterButtons(categories, works) {
     button.innerText = category;
     filterButtons.appendChild(button);
     button.addEventListener("click", function (event) {
+      // Ajoute et retire .active sur le bouton cliqué
+      const allButtons = document.querySelectorAll(".category-menu button");
+      allButtons.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
       const galleryHtml = document.querySelector(".gallery");
       galleryHtml.innerHTML = "";
-     onClickSortWorks(category, works);
-      // onClickFilterWorks(category, works);
+
+      onClickFilterWorks(category, works);
     });
   });
 }
-function getCategoryIdByName(works, categoryNames) {
-  if (categoryNames === "Tous") {
+function getCategoryIdByName(works, categoryName) {
+  if (categoryName === "Tous") {
     return 0;
   }
-  for (let i = 0; i < works.length; i++) {
-    if (works[i].category.name === categoryNames) {
-      return works[i].categoryId;
-    }
-  }
+  return works.find((work) => work.category.name === categoryName).categoryId;
+  // for (let i = 0; i < works.length; i++) {
+  //   if (works[i].category.name === categoryNames) {
+  //     return works[i].categoryId;
+  //   }
+  // }
 }
 
-function onClickSortWorks(category, works) {
-  //tri du cours
-  const categoryId = getCategoryIdByName(works, category);
-  const galleryHtml = document.querySelector(".gallery");
-  works.sort((a, b) => {
-    if (category === "Tous") {
-      return a.id - b.id;
-    } else if (a.categoryId === categoryId) {
-      return -1;
-    }
-    return 1;
-  });
-  works.forEach((work) => {
-    const figureElement = createFigureElement(work);
-    galleryHtml.appendChild(figureElement);
-  });
-}
+// function onClickSortWorks(category, works) {
+//   //tri du cours
+//   const categoryId = getCategoryIdByName(works, category);
+//   const galleryHtml = document.querySelector(".gallery");
+//   works.sort((a, b) => {
+//     if (category === "Tous") {
+//       return a.id - b.id;
+//     } else if (a.categoryId === categoryId) {
+//       return -1;
+//     }
+//     return 1;
+//   });
+//   works.forEach((work) => {
+//     const figureElement = createFigureElement(work);
+//     galleryHtml.appendChild(figureElement);
+//   });
+// }
 
-function onClickFilterWorks(category, works) { // filtres par categorie a voir avec Leo
+function onClickFilterWorks(category, works) { 
   const galleryHtml = document.querySelector(".gallery");
 works.forEach((work) => {
   if(work.category.name === category || category==="Tous") {
