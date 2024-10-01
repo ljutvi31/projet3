@@ -90,6 +90,7 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background-color: rgb(253, 250, 238);
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -187,7 +188,13 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
+li:hover,
+nav a:hover {
 	color: #B1663C;
 }
 
@@ -230,6 +237,7 @@ li:hover {
 	margin-bottom: 4em;
 	justify-content: center;
 }
+
 .category-menu button {
 	font-style: inherit;
 	font-size: inherit;
@@ -244,12 +252,12 @@ li:hover {
 	cursor: pointer;
 
 }
+
 .category-menu button.active {
 	background-color: #1D6154;
 	color: #ffffff;
-  }
+}
 
-  
 .gallery {
 	width: 100%;
 	display: grid;
@@ -311,8 +319,82 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
+/* Footer blanc */
+footer {
+	width: 100%;
+	background-color: white;
+	padding: 20px 0;
+}
+/* Lien dans le footer */
 footer nav ul {
-	display: flex;
+	background: white;
 	justify-content: flex-end;
-	margin: 2em
+}
+
+footer nav li {
+	background-color: white;
+}
+
+footer nav ul li:hover {
+	color: #B1663C;
+}
+
+/* Style pour image instagram */
+nav li img {
+	height: 22px;
+	margin-top: 3px;
+
+}
+
+/* Style de la section de connexion */
+.login-section {
+	width: 100%;
+	max-width: 350px;
+	margin: auto;
+	padding: 10em;
+}
+
+.log-in-title {
+	font-family: 'Syne', sans-serif;
+	font-size: 28px;
+	color: #1D6154;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Style du formulaire de connexion */
+.login-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.login-form label {
+	font-weight: 600;
+	margin-bottom: 8px;
+	color: #333;
+}
+
+.login-form input {
+	padding: 12px;
+	font-size: 12px;
+	border: 1px solid white;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input:focus {
+	border-color: #1D6154;
+	outline: none;
+}
+
+.login-button,
+.login-button:hover {
+	padding: 12px;
+	background-color: #1D6154;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
 }
