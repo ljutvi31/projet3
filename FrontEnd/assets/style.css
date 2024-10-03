@@ -319,12 +319,19 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
+#error-message {
+	color: red;
+	display: none;
+	font-size: 14px;
+}
+
 /* Footer blanc */
 footer {
 	width: 100%;
 	background-color: white;
 	padding: 20px 0;
 }
+
 /* Lien dans le footer */
 footer nav ul {
 	background: white;
