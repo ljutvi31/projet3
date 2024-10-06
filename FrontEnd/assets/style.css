@@ -324,17 +324,18 @@ input[type="submit"] {
 	display: none;
 	font-size: 14px;
 }
-
+/*mdp oublié*/
 .Password-forget {
 	display: flex;
 	font-family: inherit;
 	text-decoration: underline;
 	justify-content: center;
 }	
-
+/*mot de passe survol*/
 .Password-forget:hover {
 	color: #B1663C;
 }
+
 /* Footer blanc */
 footer {
 	width: 100%;
