@@ -325,6 +325,16 @@ input[type="submit"] {
 	font-size: 14px;
 }
 
+.Password-forget {
+	display: flex;
+	font-family: inherit;
+	text-decoration: underline;
+	justify-content: center;
+}	
+
+.Password-forget:hover {
+	color: #B1663C;
+}
 /* Footer blanc */
 footer {
 	width: 100%;
