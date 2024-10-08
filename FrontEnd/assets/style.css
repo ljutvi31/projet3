@@ -324,47 +324,55 @@ input[type="submit"] {
 	display: none;
 	font-size: 14px;
 }
-/*mdp oublié*/
+
 .Password-forget {
 	display: flex;
 	font-family: inherit;
 	text-decoration: underline;
 	justify-content: center;
-}	
-/*mot de passe survol*/
-.Password-forget:hover {
-	color: #B1663C;
 }
 
-/* Footer blanc */
+.Password-forget:hover {
+	color: #B1663C;
+	cursor: pointer;
+}
+
+
 footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
 	width: 100%;
 	background-color: white;
 	padding: 20px 0;
 }
 
-/* Lien dans le footer */
-footer nav ul {
-	background: white;
-	justify-content: flex-end;
+footer nav {
+	background-color: white;
 }
 
-footer nav li {
+footer nav ul {
+	width: 90%;
+	background: white;
+	justify-content: end;
+}
+
+footer nav ul li {
+	max-width: 100%;
 	background-color: white;
 }
 
 footer nav ul li:hover {
 	color: #B1663C;
+	cursor: pointer;
 }
 
-/* Style pour image instagram */
 nav li img {
 	height: 22px;
 	margin-top: 3px;
 
 }
 
-/* Style de la section de connexion */
 .login-section {
 	width: 100%;
 	max-width: 350px;
@@ -380,7 +388,6 @@ nav li img {
 	margin-bottom: 20px;
 }
 
-/* Style du formulaire de connexion */
 .login-form {
 	display: flex;
 	flex-direction: column;
