@@ -3,7 +3,8 @@ async function getApiWorks() {
     const response = await fetch("http://localhost:5678/api/works");
     return await response.json();
   } catch (error) {
-    console.error("Erreur lors de la récupération des données :", error);
+   document.querySelector(".gallery").innerText = "Erreur pendant récupération des oeuvres";
+   document.querySelector(".gallery").id = "error-message"
     return [];
   }
 }
@@ -80,5 +81,19 @@ async function createGalleryElement() {
 
 async function main() {
   await createGalleryElement();
+
+  const token = localStorage.getItem("token");
+  const tokenAuthentified = token !== null;
+
+  if (tokenAuthentified) {
+    const loginDom = document.querySelector('a[href="login.html"]');
+    loginDom.innerText = "Logout";
+    loginDom.id = "logout";
+  }
+  
+  document.getElementById("logout").addEventListener("click", function () {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+  });
 }
 main();

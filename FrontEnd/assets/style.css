@@ -320,9 +320,25 @@ input[type="submit"] {
 }
 
 #error-message {
-	color: red;
+	
 	display: none;
-	font-size: 14px;
+	text-align: center;
+	margin-bottom: 20px;
+	color: red;
+	font-size: 18px;
+	border: red;
+}
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .Password-forget {
