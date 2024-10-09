@@ -320,24 +320,25 @@ input[type="submit"] {
 }
 
 #error-message {
-	
+
 	display: none;
 	text-align: center;
 	margin-bottom: 20px;
 	color: red;
 	font-size: 18px;
 }
+
 .form-group {
-    position: relative;
-    margin-bottom: 20px;
+	position: relative;
+	margin-bottom: 20px;
 }
 
 .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+	width: 100%;
+	padding: 10px;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	transition: all 0.3s ease;
 }
 
 .Password-forget {
@@ -436,4 +437,63 @@ nav li img {
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.edit-banner {
+	display: none;
+	/* Sera changé en flex quand l'utilisateur est connecté */
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	font-size: 11px;
+	height: 25px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	/*permet de superposé la banniere d'edition sur le reste*/
+}
+
+.edit-banner span {
+	color: white;
+	background-color: black;
+	font-family: 'Work Sans';
+	margin-right: 21px;
+}
+
+.edit-banner i {
+	margin-right: 10px;
+	background-color: black;
+	color: white;
+}
+
+.edit-button {
+	border: none;
+	background: none;
+	font-family: 'Work Sans';
+	font-size: 16px;
+	font-weight: 500;
+	color: black;
+	cursor: pointer;
+	display: none;
+	/* Sera changé en flex quand l'utilisateur est connecté */
+	align-items: center;
+	margin-left: 31px;
+}
+
+.edit-button i {
+	margin-right: 5px;
+}
+
+.edit-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+/* Modifier le style des filtres quand en mode édition */
+body.edit-mode .category-menu {
+    visibility: hidden;
+    margin-bottom: 0;
 }

@@ -1,47 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const editGalleryBtn = document.getElementById("edit-gallery-btn");
-    const modal = document.getElementById("modal");
-    const closeModalBtn = document.querySelector(".close");
-    const addPhotoBtn = document.getElementById("add-photo-btn");
-    const galleryView = document.querySelector(".gallery-view");
-    const addPhotoView = document.querySelector(".add-photo-view");
-    
-    // Fonction pour afficher la modale
-    function openModal() {
-      modal.classList.remove("hidden");
-      galleryView.classList.add("active");
-      addPhotoView.classList.remove("active");
-    }
+function initializeEditMode() {
+  const token = localStorage.getItem("token");
+  const isLoggedIn = token !== null;
   
-    // Fonction pour fermer la modale
-    function closeModal() {
-      modal.classList.add("hidden");
-    }
-  
-    // Ouvrir la modale quand on clique sur le bouton Modifier
-    editGalleryBtn.addEventListener("click", openModal);
-  
-    // Fermer la modale quand on clique sur la croix
-    closeModalBtn.addEventListener("click", closeModal);
-  
-    // Fermer la modale quand on clique en dehors du contenu de la modale
-    window.addEventListener("click", function (event) {
-      if (event.target === modal) {
-        closeModal();
+  if (isLoggedIn) {
+      // Activer le mode édition
+      document.body.classList.add('edit-mode');
+      
+      // Afficher la bannière d'édition
+      const editBanner = document.querySelector('.edit-banner');
+      if (editBanner) editBanner.style.display = 'flex';
+      
+      // Afficher tous les boutons modifier
+      const editButtons = document.querySelectorAll('.edit-button');
+      editButtons.forEach(button => button.style.display = 'flex');
+      
+      // Changer le texte "login" en "logout"
+      const loginLink = document.querySelector('nav a[href="login.html"]');
+      if (loginLink) {
+          loginLink.textContent = 'logout';
+          loginLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              localStorage.removeItem('token');
+              window.location.reload();
+          });
       }
-    });
-  
-    // Changer de vue vers "Ajouter une photo"
-    addPhotoBtn.addEventListener("click", function () {
-      galleryView.classList.remove("active");
-      addPhotoView.classList.add("active");
-    });
-    
-    // Gérer le formulaire d'ajout de photo
-    const addPhotoForm = document.getElementById("add-photo-form");
-    addPhotoForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      // Gestion de l'ajout de photo ici
-      console.log("Formulaire soumis");
-    });
-  });
+  }
+}
+
+// Appeler la fonction au chargement de la page
+document.addEventListener('DOMContentLoaded', initializeEditMode);
