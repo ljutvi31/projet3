@@ -28,12 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Vérification des champs vides
     if (!email || !password) {
+      showError("Veuillez remplir tous les champs");
       return;
     }
 
     // Validation de l'email
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-zA-Z]{2,4}$/;
     if (!emailRegex.test(email)) {
+      showError("Veuillez entrer un email valide");
       return;
     }
 
