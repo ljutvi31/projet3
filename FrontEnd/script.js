@@ -3,8 +3,9 @@ async function getApiWorks() {
     const response = await fetch("http://localhost:5678/api/works");
     return await response.json();
   } catch (error) {
-   document.querySelector(".gallery").innerText = "Erreur pendant récupération des oeuvres";
-   document.querySelector(".gallery").id = "error-message"
+    document.querySelector(".gallery").innerText =
+      "Erreur pendant récupération des oeuvres";
+    document.querySelector(".gallery").id = "error-message";
     return [];
   }
 }
@@ -90,7 +91,7 @@ async function main() {
     loginDom.innerText = "Logout";
     loginDom.id = "logout";
   }
-  
+
   document.getElementById("logout").addEventListener("click", function () {
     localStorage.removeItem("token");
     window.location.href = "login.html";
@@ -99,32 +100,32 @@ async function main() {
 function initializeEditMode() {
   const token = localStorage.getItem("token");
   const isLoggedIn = token !== null;
-  
+
   if (isLoggedIn) {
-      // Activer le mode édition
-      document.body.classList.add('edit-mode');
-      
-      // Afficher la bannière d'édition
-      const editBanner = document.querySelector('.edit-banner');
-      if (editBanner) editBanner.style.display = 'flex';
-      
-      // Afficher tous les boutons modifier
-      const editButtons = document.querySelectorAll('.edit-button');
-      editButtons.forEach(button => button.style.display = 'flex');
-      
-      // Changer le texte "login" en "logout"
-      const loginLink = document.querySelector('nav a[href="login.html"]');
-      if (loginLink) {
-          loginLink.textContent = 'logout';
-          loginLink.addEventListener('click', function(e) {
-              e.preventDefault();
-              localStorage.removeItem('token');
-              window.location.reload();
-          });
-      }
+    // Activer le mode édition
+    document.body.classList.add("edit-mode");
+
+    // Afficher la bannière d'édition
+    const editBanner = document.querySelector(".edit-banner");
+    if (editBanner) editBanner.style.display = "flex";
+
+    // Afficher tous les boutons modifier
+    const editButtons = document.querySelectorAll(".edit-button");
+    editButtons.forEach((button) => (button.style.display = "flex"));
+
+    // Change "login" en "logout"
+    const loginLink = document.querySelector('nav a[href="login.html"]');
+    if (loginLink) {
+      loginLink.textContent = "logout";
+      loginLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("token");
+        window.location.reload();
+      });
+    }
   }
 }
 
-// Appeler la fonction au chargement de la page
-document.addEventListener('DOMContentLoaded', initializeEditMode);
+// Appel la fonction au chargement de la page
+document.addEventListener("DOMContentLoaded", initializeEditMode);
 main();
