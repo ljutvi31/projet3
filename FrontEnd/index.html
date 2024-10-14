@@ -80,7 +80,7 @@
 
 	<div class="modal" id="projectModal">
 		<div class="modal-content">
-			<span class="close">&times;</span>
+			<span class="close">&times;</span>  <!--représente le symbole "×" -->
 			<h3>Galerie photo</h3>
 			<div class="modal-gallery">
 			</div>
@@ -90,9 +90,26 @@
 			</div>
 		</div>
 	</div>
+	
+	<div id="addPhotoView" class="modal-view" style="display: none;">
+		<h3>Ajout photo</h3>
+		<form id="addPhotoForm">
+			<label for="image">Sélectionner une image :</label>
+			<input type="file" id="image" name="image" accept="image/*" required>
+	
+			<label for="title">Titre de l'image :</label>
+			<input type="text" id="title" name="title" required>
+	
+			<div class="form-footer">
+				<input type="submit" value="Ajouter la photo">
+				<button type="button" class="back-to-gallery-btn">Retour à la galerie</button>
+			</div>
+		</form>
+	</div>
+	</div>
+	</div>
 
 	<footer>
-
 		<nav>
 			<ul>
 				<li>Mentions Légales</li>

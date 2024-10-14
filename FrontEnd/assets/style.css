@@ -362,6 +362,10 @@ footer {
 	padding: 20px 0;
 }
 
+.footer-end {
+	bottom: 0;
+}
+
 footer nav {
 	background-color: white;
 }
@@ -512,15 +516,21 @@ body.edit-mode .category-menu {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal.is-active {
+	display: block;
+	/* Affiche la modale */
+}
+
 /* Modal contour etc */
 .modal-content {
 	background-color: white;
-	margin: 15% auto;
+	margin: 8% auto;
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%;
-	max-width: 620px;
+	max-width: 600px;
 	border-radius: 15px;
+	overflow-y: auto;
 }
 
 /* Bouton X */
@@ -546,9 +556,9 @@ body.edit-mode .category-menu {
 	gap: 10px;
 	margin-top: 20px;
 	margin-top: 58px;
-	margin-left: 70px;
-	margin-right: 70px;
-	margin-bottom: 70px;
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-bottom: 40px;
 	background-color: inherit;
 }
 
@@ -582,10 +592,13 @@ body.edit-mode .category-menu {
 	background-color: inherit;
 }
 
+/* trait gris*/
 hr {
 	margin: 25px 0;
 	border: none;
 	border-top: 1px solid #B3B3B3;
+	margin-left: 60px;
+	margin-right: 60px;
 }
 
 .modal-footer {

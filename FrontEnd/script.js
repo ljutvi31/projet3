@@ -112,19 +112,9 @@ function initializeEditMode() {
     // Afficher tous les boutons modifier
     const editButtons = document.querySelectorAll(".edit-button");
     editButtons.forEach((button) => (button.style.display = "flex"));
-
-    // Change "login" en "logout"
-    const loginLink = document.querySelector('nav a[href="login.html"]');
-    if (loginLink) {
-      loginLink.textContent = "logout";
-      loginLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        localStorage.removeItem("token");
-        window.location.reload();
-      });
-    }
   }
 }
+
 
 // Appel la fonction au chargement de la page
 document.addEventListener("DOMContentLoaded", initializeEditMode);
