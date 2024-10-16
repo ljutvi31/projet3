@@ -67,3 +67,71 @@ async function loadModalImages() {
 // Charger les images à l'ouverture de la modale
 editButton.addEventListener("click", loadModalImages);
 editBanner.addEventListener("click", loadModalImages);
+
+//modale 2, ajout des classes aux variables
+const addPhotoModal = document.getElementById("addPhotoModal");
+const addPhotoBtn = document.querySelector(".add-photo-btn");
+const addPhotoForm = document.getElementById("addPhotoForm");
+const photoUpload = document.getElementById("photoUpload");
+const photoTitle = document.getElementById("photoTitle");
+const photoCategory = document.getElementById("photoCategory");
+const validateBtn = document.querySelector(".validate-btn");
+// ajout ecoute au btn d'ajout
+addPhotoBtn.addEventListener("click", openAddPhotoModal);
+
+function openAddPhotoModal() {
+  closeModal(); // Ferme la première modale
+  addPhotoModal.classList.add("is-active");
+  loadCategories();
+}
+
+function closeAddPhotoModal() {
+  addPhotoModal.classList.remove("is-active");
+}
+
+addPhotoModal.querySelector(".close").addEventListener("click", closeAddPhotoModal);
+
+async function loadCategories() {
+  try {
+    const response = await fetch("http://localhost:5678/api/categories");
+    const categories = await response.json();
+    photoCategory.innerHTML = categories.map(category => 
+      `<option value="${category.id}">${category.name}</option>`
+    ).join("");
+  } catch (error) {
+    console.error("Erreur lors du chargement des catégories:", error);
+  }
+}
+
+photoUpload.addEventListener("change", () => {
+  validateBtn.classList.add("active");
+});
+
+addPhotoForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData();
+  formData.append("image", photoUpload.files[0]);
+  formData.append("title", photoTitle.value);
+  formData.append("category", photoCategory.value);
+
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      closeAddPhotoModal();
+      loadModalImages(); // Recharge les images dans la première modale
+      createGalleryElement(); // Recharge la galerie principale
+    } else {
+      console.error("Erreur lors de l'ajout de la photo");
+    }
+  } catch (error) {
+    console.error("Erreur lors de l'envoi de la photo:", error);
+  }
+});

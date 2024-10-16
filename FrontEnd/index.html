@@ -91,24 +91,28 @@
 		</div>
 	</div>
 	
-	<div id="addPhotoView" class="modal-view" style="display: none;">
-		<h3>Ajout photo</h3>
-		<form id="addPhotoForm">
-			<label for="image">Sélectionner une image :</label>
-			<input type="file" id="image" name="image" accept="image/*" required>
-	
-			<label for="title">Titre de l'image :</label>
-			<input type="text" id="title" name="title" required>
-	
-			<div class="form-footer">
-				<input type="submit" value="Ajouter la photo">
-				<button type="button" class="back-to-gallery-btn">Retour à la galerie</button>
+	<div class="modal" id="addPhotoModal">
+		<div class="modal-content">
+		  <span class="close">&times;</span>
+		  <h3>Ajout photo</h3>
+		  <form id="addPhotoForm">
+			<div class="image-upload-container">
+			  <i class="far fa-image"></i>
+			  <label for="photoUpload" class="custom-file-upload">+ Ajouter photo</label>
+			  <input type="file" id="photoUpload" accept="image/*" required>
+			  <p class ="format-type">jpg, png : 4mo max</p>
 			</div>
-		</form>
-	</div>
-	</div>
-	</div>
-
+			<label for="photoTitle">Titre</label>
+			<input type="text" id="photoTitle" required>
+			<label for="photoCategory">Catégorie</label>
+			<select id="photoCategory" required>
+			  <!-- Les options seront ajoutées dynamiquement en JavaScript -->
+			</select>
+			<hr>
+			<button type="submit" class="validate-btn">Valider</button>
+		  </form>
+		</div>
+	  </div>
 	<footer>
 		<nav>
 			<ul>
