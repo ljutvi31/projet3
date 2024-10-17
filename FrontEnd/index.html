@@ -80,43 +80,44 @@
 
 	<div class="modal" id="projectModal">
 		<div class="modal-content">
-			<span class="close">&times;</span>  
+			<span class="close">&times;</span>
 			<h3>Galerie photo</h3>
 			<div class="modal-gallery">
 			</div>
-			<hr>
+			<hr class="hrmodal">
 			<div class="modal-footer">
 				<button class="add-photo-btn">Ajouter une photo</button>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="modal" id="addPhotoModal">
 		<div class="modal-content">
 			<i class="fa-solid fa-arrow-left back-button"></i>
 			<span class="close">&times;</span>
 			<h3>Ajout photo</h3>
-		  <form id="addPhotoForm">
-			<div class="image-upload-container">
-			  <i class="far fa-image"></i>
-			  <label for="photoUpload" class="custom-file-upload">+ Ajouter photo</label>
-			  <div class="preview-container">
-				<img id="photoPreview" src="" alt="Prévisualisation de la photo" style="display:none; max-width: 100%; height: auto;">
-			</div>
-			  <input type="file" id="photoUpload" accept="image/*" required>
-			  <p class ="format-type">jpg, png : 4mo max</p>
-			</div>
-			<label for="photoTitle">Titre</label>
-			<input type="text" id="photoTitle" required>
-			<label for="photoCategory">Catégorie</label>
-			<select id="photoCategory" required>
-			  <!-- Les options seront ajoutées dynamiquement en JavaScript -->
-			</select>
-			<hr>
-			<button type="submit" class="validate-btn">Valider</button>
-		  </form>
+			<form id="addPhotoForm">
+				<div class="image-upload-container">
+					<i class="far fa-image"></i>
+					<label for="photoUpload" class="custom-file-upload">+ Ajouter photo</label>
+					<div class="preview-container">
+						<img id="photoPreview" src="" alt="Prévisualisation de la photo"
+							style="display:none; max-width: 100%">
+					</div>
+					<input type="file" id="photoUpload" accept="image/*" required>
+					<p class="format-type">jpg, png : 4mo max</p>
+				</div>
+				<label for="photoTitle">Titre</label>
+				<input type="text" id="photoTitle" required>
+				<label for="photoCategory">Catégorie</label>
+				<select id="photoCategory" required>
+					<!-- Les options seront ajoutées dynamiquement en JavaScript -->
+				</select>
+				<hr>
+				<button type="submit" class="validate-btn">Valider</button>
+			</form>
 		</div>
-	  </div>
+	</div>
 	<footer>
 		<nav>
 			<ul>

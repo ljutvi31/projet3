@@ -191,3 +191,15 @@ photoUpload.addEventListener("change", () => {
         photoPreview.style.display = "none"; // Masquer la prévisualisation si aucun fichier n'est sélectionné
     }
 });
+
+// Ouvrir la modale d'ajout de photo
+function openAddPhotoModal() {
+    modal.classList.remove("is-active");
+    addPhotoModal.classList.add("is-active");
+    loadCategories();
+    
+    // Réinitialiser l'image de prévisualisation
+    const photoPreview = document.getElementById("photoPreview");
+    photoPreview.style.display = "none"; // Masquer l'image de prévisualisation
+    photoPreview.src = ""; // Réinitialiser la source de l'image
+}
