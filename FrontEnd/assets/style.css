@@ -530,7 +530,6 @@ body.edit-mode .category-menu {
 	width: 80%;
 	max-width: 600px;
 	border-radius: 15px;
-	overflow-y: auto;
 }
 
 /* Bouton X */
@@ -560,6 +559,8 @@ body.edit-mode .category-menu {
 	margin-right: 80px;
 	margin-bottom: 40px;
 	background-color: inherit;
+	max-height: 400px;
+  overflow-y: scroll;
 }
 
 .modal-gallery figure {
@@ -694,6 +695,61 @@ hr {
 	font-size: 10px;
   }
 
-  #photoCategory {
+  .back-button {
+    left: 20px;
+    top: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+}
 
-  }
+	.back-button:hover {
+    color: #1D6154;
+}
+#photoCategory {
+    appearance: none; /* Supprime le style par défaut */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    padding: 15px;
+    width: 100%;
+    font-family: 'Work Sans';
+    font-size: 14px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+#photoCategory:focus {
+    outline: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+/* Cache le texte des options non sélectionnées */
+#photoCategory option {
+    color: black;
+    background-color: white;
+    padding: 15px;
+}
+
+/* Style pour l'option sélectionnée */
+#photoCategory option:checked {
+    background-color: #1D6154;
+    color: white;
+}
+
+/* Image de prévisualisation */
+#photoPreview {
+    display: none; /* Cacher l'image par défaut */
+    height: 168px;
+    margin-top: 10px;
+    position: absolute; /* Permettre l'utilisation du z-index */
+    top: 221px;
+    left: 50%;
+    transform: translateX(-50%); /* Centrer horizontalement */
+    z-index: 10; /* Mettre l'image au-dessus du formulaire */
+}

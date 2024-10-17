@@ -80,7 +80,7 @@
 
 	<div class="modal" id="projectModal">
 		<div class="modal-content">
-			<span class="close">&times;</span>  <!--représente le symbole "×" -->
+			<span class="close">&times;</span>  
 			<h3>Galerie photo</h3>
 			<div class="modal-gallery">
 			</div>
@@ -93,12 +93,16 @@
 	
 	<div class="modal" id="addPhotoModal">
 		<div class="modal-content">
-		  <span class="close">&times;</span>
-		  <h3>Ajout photo</h3>
+			<i class="fa-solid fa-arrow-left back-button"></i>
+			<span class="close">&times;</span>
+			<h3>Ajout photo</h3>
 		  <form id="addPhotoForm">
 			<div class="image-upload-container">
 			  <i class="far fa-image"></i>
 			  <label for="photoUpload" class="custom-file-upload">+ Ajouter photo</label>
+			  <div class="preview-container">
+				<img id="photoPreview" src="" alt="Prévisualisation de la photo" style="display:none; max-width: 100%; height: auto;">
+			</div>
 			  <input type="file" id="photoUpload" accept="image/*" required>
 			  <p class ="format-type">jpg, png : 4mo max</p>
 			</div>
