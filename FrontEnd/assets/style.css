@@ -553,13 +553,12 @@ body.edit-mode .category-menu {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 	gap: 10px;
-	margin-top: 20px;
-	margin-top: 58px;
+	margin-top: 55px;
 	margin-left: 80px;
 	margin-right: 80px;
 	margin-bottom: 40px;
 	background-color: inherit;
-	max-height: 400px;
+	max-height: 420px;
 	overflow-y: scroll;
 }
 
@@ -683,17 +682,13 @@ input[type="text"] {
 	width: 95%;
 }
 
-select {
-	color: transparent;
-	/* Texte invisible sur input */
-}
-
 hr {
 	margin: 25px 0;
 	border: none;
 	border-top: 1px solid #B3B3B3;
 	margin-top: 45px;
 }
+
 .validate-btn {
 	background-color: #A7A7A7;
 	color: white;
@@ -741,6 +736,7 @@ hr {
 	cursor: pointer;
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 	background-repeat: no-repeat;
+	/* Ne duplique pas le chevron*/
 	background-position: right 15px center;
 	background-size: 15px;
 }
@@ -764,14 +760,26 @@ hr {
 }
 
 /* Image de prévisualisation */
+.preview-container {
+	width: 100%;
+	max-width: 350px;
+	/* Ajustez selon vos besoins */
+	margin: 0 auto;
+	text-align: center;
+
+}
+
 #photoPreview {
-	display: none;
-	height: 169px;
-	margin-top: 10px;
+	max-height: 170px;
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
+	margin-top: 4px;
 	position: absolute;
-	top: 209px;
+	top: 29%;
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 10;
-	width: 16%;
+	width: 11%;
+	background-color: #E8F1F6;
 }

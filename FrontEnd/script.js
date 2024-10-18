@@ -14,21 +14,17 @@ function createFigureElement(work) {
   const imageElement = document.createElement("img");
   imageElement.src = work.imageUrl;
   imageElement.alt = work.title;
-
   const figCaptionElement = document.createElement("figcaption");
   figCaptionElement.innerText = work.title;
-
   const figureElement = document.createElement("figure");
   figureElement.appendChild(imageElement);
   figureElement.appendChild(figCaptionElement);
-
   return figureElement;
 }
 
 function getCategories(works) {
   const categoryNames = works.map((work) => work.category.name);
   const uniqueCategoryNames = new Set(categoryNames);
-
   return ["Tous", ...uniqueCategoryNames];
 }
 
@@ -41,17 +37,16 @@ function createFilterButtons(categories, works) {
     button.innerText = category;
     filterButtons.appendChild(button);
     button.addEventListener("click", function (event) {
-      // Ajoute et retire .active sur le bouton cliqué
       const allButtons = document.querySelectorAll(".category-menu button");
       allButtons.forEach((btn) => btn.classList.remove("active"));
       this.classList.add("active");
       const galleryHtml = document.querySelector(".gallery");
       galleryHtml.innerHTML = "";
-
       onClickFilterWorks(category, works);
     });
   });
 }
+
 function getCategoryIdByName(works, categoryName) {
   if (categoryName === "Tous") {
     return 0;
@@ -68,54 +63,55 @@ function onClickFilterWorks(category, works) {
     }
   });
 }
-async function createGalleryElement() {
-  const works = await getApiWorks();
-  const categories = getCategories(works);
-  createFilterButtons(categories, works);
 
-  const galleryHtml = document.querySelector(".gallery");
-  works.forEach((work) => {
-    const figureElement = createFigureElement(work);
+async function createGalleryElement(newWork = null) {
+  if (newWork) {
+    // Si un nouveau travail est fourni, ajoutez-le simplement à la galerie existante
+    const galleryHtml = document.querySelector(".gallery");
+    const figureElement = createFigureElement(newWork);
     galleryHtml.appendChild(figureElement);
-  });
+  } else {
+    // Sinon, créez la galerie complète
+    const works = await getApiWorks();
+    const categories = getCategories(works);
+    createFilterButtons(categories, works);
+    const galleryHtml = document.querySelector(".gallery");
+    galleryHtml.innerHTML = ''; // Vide la galerie existante
+    works.forEach((work) => {
+      const figureElement = createFigureElement(work);
+      galleryHtml.appendChild(figureElement);
+    });
+  }
 }
 
 async function main() {
   await createGalleryElement();
-
   const token = localStorage.getItem("token");
   const tokenAuthentified = token !== null;
-
   if (tokenAuthentified) {
     const loginDom = document.querySelector('a[href="login.html"]');
     loginDom.innerText = "Logout";
     loginDom.id = "logout";
   }
-
-  document.getElementById("logout").addEventListener("click", function () {
+  document.getElementById("logout")?.addEventListener("click", function () {
     localStorage.removeItem("token");
     window.location.href = "login.html";
   });
 }
+
 function initializeEditMode() {
   const token = localStorage.getItem("token");
   const isLoggedIn = token !== null;
-
   if (isLoggedIn) {
-    // Activer le mode édition
     document.body.classList.add("edit-mode");
-
-    // Afficher la bannière d'édition
     const editBanner = document.querySelector(".edit-banner");
     if (editBanner) editBanner.style.display = "flex";
-
-    // Afficher tous les boutons modifier
     const editButtons = document.querySelectorAll(".edit-button");
     editButtons.forEach((button) => (button.style.display = "flex"));
   }
 }
 
-
-// Appel la fonction au chargement de la page
-document.addEventListener("DOMContentLoaded", initializeEditMode);
-main();
+document.addEventListener("DOMContentLoaded", () => {
+  initializeEditMode();
+  main();
+});
