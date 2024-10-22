@@ -80,9 +80,9 @@ async function loadCategories() {
     const categories = await response.json();
 
     photoCategory.innerHTML = `
-      <option value="" disabled selected>Choisissez une catégorie</option>
+      <option value="" disabled selected>Choisissez une catégorie</option> 
       ${categories.map(category => `<option value="${category.id}">${category.name}</option>`).join('')}
-    `;
+    `; // à revoir possiblement ? 
   } catch (error) {
     console.error("Erreur lors du chargement des catégories:", error);
     photoCategory.innerHTML = "<option>Erreur de chargement des catégories</option>";

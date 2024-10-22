@@ -66,12 +66,12 @@ function onClickFilterWorks(category, works) {
 
 async function createGalleryElement(newWork = null) {
   if (newWork) {
-    // Si un nouveau travail est fourni, ajoutez-le simplement à la galerie existante
+    // Si un nouveau travail est fourni, ajout simplement à la galerie existante
     const galleryHtml = document.querySelector(".gallery");
     const figureElement = createFigureElement(newWork);
     galleryHtml.appendChild(figureElement);
   } else {
-    // Sinon, créez la galerie complète
+    // Sinon, cree la galerie complète
     const works = await getApiWorks();
     const categories = getCategories(works);
     createFilterButtons(categories, works);
