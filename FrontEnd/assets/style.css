@@ -283,6 +283,7 @@ nav a:hover {
 
 #contact h2 {
 	margin-bottom: 20px;
+	margin-top: 40px;
 }
 
 #contact form {
@@ -474,30 +475,30 @@ nav li img {
 }
 
 .projects-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1em;
-	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1em;
+
 }
 
 .edit-modal-button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 	margin-left: 1em;
 }
 
 .edit-button {
-    border: none;
-    background: none;
-    font-family: 'Work Sans';
-    font-size: 16px;
-    font-weight: 500;
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
-    margin-left: 2px;
+	border: none;
+	background: none;
+	font-family: 'Work Sans';
+	font-size: 16px;
+	font-weight: 500;
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+	margin-left: 2px;
 }
 
 
@@ -553,6 +554,7 @@ body.edit-mode .category-menu {
 	font-size: 35px;
 	font-weight: bold;
 	cursor: pointer;
+	background-color: inherit;
 }
 
 /* Survol fermeture x */
@@ -677,7 +679,7 @@ body.edit-mode .category-menu {
 }
 
 label {
-	background-color: white;
+	background-color: inherit;
 }
 
 #addPhotoForm input[type="text"],
@@ -692,9 +694,6 @@ label {
 	padding-bottom: 15px;
 }
 
-input[type="text"] {
-	width: 95%;
-}
 
 hr {
 	margin: 25px 0;

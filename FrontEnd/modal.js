@@ -76,16 +76,36 @@ async function loadModalImages() {
 // Charger les catégories dans le select
 async function loadCategories() {
   try {
-    const response = await fetch("http://localhost:5678/api/categories");
-    const categories = await response.json();
+      const response = await fetch("http://localhost:5678/api/categories");
+      const categories = await response.json();
+      
+      // Videle select 
+      photoCategory.innerHTML = '';
+      
+      // creation et ajout l'option par défaut
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.disabled = true;
+      defaultOption.selected = true;
+      defaultOption.textContent = "Choisissez une catégorie";
+      photoCategory.appendChild(defaultOption);
+      
+      // Ajouter chaque catégorie
+      categories.forEach(category => {
+          const option = document.createElement("option");
+          option.value = category.id;
+          option.textContent = category.name;
+          photoCategory.appendChild(option);
+      });
 
-    photoCategory.innerHTML = `
-      <option value="" disabled selected>Choisissez une catégorie</option> 
-      ${categories.map(category => `<option value="${category.id}">${category.name}</option>`).join('')}
-    `; // à revoir possiblement ? 
   } catch (error) {
-    console.error("Erreur lors du chargement des catégories:", error);
-    photoCategory.innerHTML = "<option>Erreur de chargement des catégories</option>";
+      console.error("Erreur lors du chargement des catégories:", error);
+      
+      // Gérer l'erreur de manière sécurisée
+      photoCategory.innerHTML = ''; // Vider d'abord
+      const errorOption = document.createElement("option");
+      errorOption.textContent = "Erreur de chargement des catégories";
+      photoCategory.appendChild(errorOption);
   }
 }
 
@@ -198,11 +218,10 @@ photoUpload.addEventListener("change", () => {
   }
 });
 
-// au clic, retour à l'interface d'ajout de photo 
+// au clic, retour à l'interface d'ajout de photo
 photoPreview.addEventListener("click", showUploadInterface);
 
 // Fonction pour afficher l'interface d'ajout
 function showUploadInterface() {
-    photoPreview.style.display = "none";
-
+  photoPreview.style.display = "none";
 }
