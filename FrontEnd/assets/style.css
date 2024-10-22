@@ -473,19 +473,33 @@ nav li img {
 	color: white;
 }
 
-.edit-button {
-	border: none;
-	background: none;
-	font-family: 'Work Sans';
-	font-size: 16px;
-	font-weight: 500;
-	color: black;
-	cursor: pointer;
-	display: none;
-	/* Sera changé en flex quand l'utilisateur est connecté */
-	align-items: center;
-	margin-left: 31px;
+.projects-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+	
 }
+
+.edit-modal-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+	margin-left: 1em;
+}
+
+.edit-button {
+    border: none;
+    background: none;
+    font-family: 'Work Sans';
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 2px;
+}
+
 
 .edit-button i {
 	margin-right: 5px;
