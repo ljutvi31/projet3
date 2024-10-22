@@ -197,3 +197,12 @@ photoUpload.addEventListener("change", () => {
     photoPreview.style.display = "none";
   }
 });
+
+// au clic, retour à l'interface d'ajout de photo 
+photoPreview.addEventListener("click", showUploadInterface);
+
+// Fonction pour afficher l'interface d'ajout
+function showUploadInterface() {
+    photoPreview.style.display = "none";
+
+}
