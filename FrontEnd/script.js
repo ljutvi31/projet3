@@ -85,18 +85,21 @@ async function createGalleryElement(newWork = null) {
 }
 
 async function main() {
-  await createGalleryElement();
-  const token = localStorage.getItem("token");
-  const tokenAuthentified = token !== null;
-  if (tokenAuthentified) {
-    const loginDom = document.querySelector('a[href="login.html"]');
-    loginDom.innerText = "Logout";
-    loginDom.id = "logout";
-  }
-  document.getElementById("logout")?.addEventListener("click", function () {
-    localStorage.removeItem("token");
-    window.location.href = "login.html";
-  });
+    await createGalleryElement();
+    
+    const token = localStorage.getItem("token");
+    if (!token) return; // Sort si pas de token
+    
+    const loginLink = document.querySelector('a[href="login.html"]');
+    if (!loginLink) return; // Sort si pas de lien
+    
+    // Configure le lien de déconnexion
+    loginLink.innerText = "Logout";
+    loginLink.id = "logout";
+    loginLink.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "login.html";
+    });
 }
 
 function initializeEditMode() {
