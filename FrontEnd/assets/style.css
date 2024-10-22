@@ -475,30 +475,30 @@ nav li img {
 }
 
 .projects-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1em;
-	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1em;
+
 }
 
 .edit-modal-button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 	margin-left: 1em;
 }
 
 .edit-button {
-    border: none;
-    background: none;
-    font-family: 'Work Sans';
-    font-size: 16px;
-    font-weight: 500;
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
-    margin-left: 2px;
+	border: none;
+	background: none;
+	font-family: 'Work Sans';
+	font-size: 16px;
+	font-weight: 500;
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+	margin-left: 2px;
 }
 
 
@@ -779,16 +779,13 @@ hr {
 .preview-container {
 	width: 100%;
 	max-width: 350px;
-	/* Ajustez selon vos besoins */
 	margin: 0 auto;
 	text-align: center;
-
 }
 
 #photoPreview {
 	max-height: 170px;
 	max-width: 100%;
-	height: auto;
 	object-fit: contain;
 	margin-top: 4px;
 	position: absolute;
