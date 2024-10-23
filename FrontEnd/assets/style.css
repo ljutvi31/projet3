@@ -490,6 +490,7 @@ nav li img {
 }
 
 .edit-button {
+	display: none;
 	border: none;
 	background: none;
 	font-family: 'Work Sans';
