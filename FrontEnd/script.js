@@ -1,4 +1,3 @@
-// Sélectionner les éléments une seule fois au début
 const gallery = document.querySelector(".gallery");
 const categoryMenu = document.querySelector(".category-menu");
 
@@ -40,12 +39,10 @@ function createFilterButtons(categories, works) {
     button.innerText = category;
     categoryMenu.appendChild(button);
     button.addEventListener("click", function () {
-      // Mise à jour des boutons actifs
       const allButtons = categoryMenu.querySelectorAll("button");
       allButtons.forEach((btn) => btn.classList.remove("active"));
       this.classList.add("active");
 
-      // Filtrer la galerie
       gallery.innerHTML = "";
       onClickFilterWorks(category, works);
     });

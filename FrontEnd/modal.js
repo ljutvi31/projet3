@@ -17,8 +17,7 @@ function openModal() {
   modal.classList.add("is-active");
   loadModalImages();
 }
-
-// Fermer toutes les modales
+// ferme les modales
 function closeModal() {
   modal.classList.remove("is-active");
   addPhotoModal.classList.remove("is-active");
@@ -67,7 +66,6 @@ async function loadModalImages() {
       modalGallery.appendChild(figure);
     });
   } catch (error) {
-    console.error("Error fetching data:", error);
     modalGallery.innerHTML =
       "<p>Une erreur s'est produite lors du chargement des images.</p>";
   }
@@ -98,10 +96,9 @@ async function loadCategories() {
       photoCategory.appendChild(option);
     });
   } catch (error) {
-    console.error("Erreur lors du chargement des catégories:", error);
 
     // Gérer l'erreur de manière sécurisée
-    photoCategory.innerHTML = ""; // Vider d'abord
+    photoCategory.innerHTML = ""; 
     const errorOption = document.createElement("option");
     errorOption.textContent = "Erreur de chargement des catégories";
     photoCategory.appendChild(errorOption);
@@ -129,7 +126,6 @@ async function deleteProject(id) {
       throw new Error("Erreur lors de la suppression");
     }
   } catch (error) {
-    console.error("Erreur lors de la suppression:", error);
     alert("Une erreur est survenue lors de la suppression du projet");
   }
 }
@@ -187,18 +183,17 @@ addPhotoForm.addEventListener("submit", async (e) => {
     if (response.ok) {
       const newWork = await response.json();
       closeModal();
-      createGalleryElement(newWork); // Ajoute seulement le nouveau travail à la galerie
+      createGalleryElement(newWork); 
       loadModalImages();
     } else {
       throw new Error("Erreur lors de l'ajout de la photo");
     }
   } catch (error) {
-    console.error("Erreur lors de l'envoi de la photo:", error);
     alert("Une erreur est survenue lors de l'ajout de la photo");
   }
 });
 
-// Prévisualiser la photo lorsque l'utilisateur sélectionne un fichier
+// Prévisualise la photo lorsque sélection fichier
 photoUpload.addEventListener("change", () => {
   const file = photoUpload.files[0];
   if (file) {

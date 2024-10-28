@@ -446,7 +446,6 @@ nav li img {
 
 .edit-banner {
 	display: none;
-	/* Sera changé en flex quand l'utilisateur est connecté */
 	justify-content: center;
 	align-items: center;
 	background-color: black;
@@ -458,7 +457,6 @@ nav li img {
 	left: 0;
 	cursor: pointer;
 	z-index: 999;
-	/*permet de superposé la banniere d'edition sur le reste*/
 }
 
 .edit-banner span {
@@ -740,7 +738,6 @@ hr {
 
 #photoCategory {
 	appearance: none;
-	/* Supprime le style par défaut */
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background-color: white;
